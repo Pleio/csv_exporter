@@ -1,0 +1,7 @@
+{
+    "name": "coldtrick/csv_exporter",
+    "type": "elgg-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
