@@ -26,6 +26,7 @@ $language = array (
   'csv_exporter:exportable_value:user:last_login' => "Laatste login",
   'csv_exporter:exportable_value:user:last_login_readable' => "Laatste login (leesbaar)",
   'csv_exporter:exportable_value:group:member_count' => 'Aantal leden',
+  'csv_exporter:exportable_value:group:admins' => 'Groep beheerders',
   'csv_exporter:exportable_value:group:last_activity' => 'Laatste activiteit',
   'csv_exporter:exportable_value:group:last_activity_readable' => 'Laatste activiteit (leesbaar)',
   'csv_exporter:admin:type_subtype' => 'Wat wil je exporteren',
