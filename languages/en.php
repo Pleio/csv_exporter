@@ -23,6 +23,7 @@ $english = array(
 	'csv_exporter:exportable_value:time_created_readable' => "Time created (readable)",
 	'csv_exporter:exportable_value:time_updated_readable' => "Time updated (readable)",
 	'csv_exporter:exportable_value:url' => "Entity URL",
+	'csv_exporter:exportable_value:user:site_newsletter' => "Site newsletter",
 	'csv_exporter:exportable_value:user:last_action' => "Last action",
 	'csv_exporter:exportable_value:user:last_action_readable' => "Last action (readable)",	
 	'csv_exporter:exportable_value:user:last_login' => "Last login",

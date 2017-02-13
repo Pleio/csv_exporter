@@ -21,6 +21,7 @@ $language = array (
   'csv_exporter:exportable_value:time_created_readable' => 'Datum aangemaakt (leesbaar)',
   'csv_exporter:exportable_value:time_updated_readable' => 'Datum aangepast (leesbaar)',
   'csv_exporter:exportable_value:url' => 'Entity URL',
+  'csv_exporter:exportable_value:user:site_newsletter' => "Site nieuwsbrief",
   'csv_exporter:exportable_value:user:last_action' => "Laatste actie",
   'csv_exporter:exportable_value:user:last_action_readable' => "Laatste actie (leesbaar)",
   'csv_exporter:exportable_value:user:last_login' => "Laatste login",

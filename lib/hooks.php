@@ -54,6 +54,8 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					
 					// others
 					$returnvalue[elgg_echo("email")] = "email";
+					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:site_newsletter")] = "csv_exporter_site_newsletter";
+
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:last_action")] = "csv_exporter_user_last_action";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:last_action_readable")] = "csv_exporter_user_last_action_readable";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:last_login")] = "csv_exporter_user_last_login";
@@ -259,6 +261,10 @@ function csv_exporter_export_value_hook($hook, $type, $returnvalue, $params) {
 						$returnvalue = implode(", ", $tags);
 					}
 				}
+				break;
+			case "csv_exporter_site_newsletter":
+				$site = elgg_get_site_entity();
+				$returnvalue = check_entity_relationship($entity->guid, "subscribed", $site->guid) ? "yes" : "no";
 				break;
 			case "csv_exporter_user_last_action":
 				$returnvalue = $entity->last_action;
