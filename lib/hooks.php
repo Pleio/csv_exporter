@@ -37,7 +37,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 				
 			switch ($type) {
 				case "object":
-					$returnvalue[elgg_echo("tags")] = "csv_exporter_object_tags";
+					$returnvalue[elgg_echo("tags")] = "csv_exporter_tags";
 					break;
 				case "user":
 					// add profile fields
@@ -54,6 +54,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					
 					// others
 					$returnvalue[elgg_echo("email")] = "email";
+					$returnvalue[elgg_echo("tags")] = "csv_exporter_tags";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:site_newsletter")] = "csv_exporter_site_newsletter";
 
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:user:last_action")] = "csv_exporter_user_last_action";
@@ -100,7 +101,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 			
 			switch ($type) {
 				case "object":
-					$returnvalue[] = "csv_exporter_object_tags";
+					$returnvalue[] = "csv_exporter_tags";
 					break;
 				case "user":
 					// add profile fields
@@ -113,6 +114,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					
 					//others
 					$returnvalue[] = "email";
+					$returnvalue[] = "csv_exporter_tags";
 					
 					break;
 				case "group":
@@ -250,16 +252,14 @@ function csv_exporter_export_value_hook($hook, $type, $returnvalue, $params) {
 					$entity->url;
 				}
 				break;
-			case "csv_exporter_object_tags":
-				if (elgg_instanceof($entity, "object")) {
-					if ($entity->tags) {
-						$tags = $entity->tags;
-						if (!is_array($tags)) {
-							$tags = array($tags);
-						}
-						
-						$returnvalue = implode(", ", $tags);
+			case "csv_exporter_tags":
+				if ($entity->tags) {
+					$tags = $entity->tags;
+					if (!is_array($tags)) {
+						$tags = array($tags);
 					}
+					
+					$returnvalue = implode(", ", $tags);
 				}
 				break;
 			case "csv_exporter_site_newsletter":
