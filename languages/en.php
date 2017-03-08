@@ -30,6 +30,7 @@ $english = array(
 	'csv_exporter:exportable_value:user:last_login_readable' => "Last login (readable)",
 	'csv_exporter:exportable_value:group:member_count' => "Member count",
 	'csv_exporter:exportable_value:group:admins' => "Group admins",
+	'csv_exporter:exportable_value:group:admins:email' => "Group admins email",
 	'csv_exporter:exportable_value:group:last_activity' => "Last activity",
 	'csv_exporter:exportable_value:group:last_activity_readable' => "Last activity (readable)",
 	

@@ -79,6 +79,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					// others
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:member_count")] = "csv_exporter_group_member_count";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:admins")] = "csv_exporter_group_admins";
+					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:admins:email")] = "csv_exporter_group_admins_email";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:last_activity")] = "csv_exporter_group_last_activity";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:last_activity_readable")] = "csv_exporter_group_last_activity_readable";
 					break;
@@ -288,6 +289,17 @@ function csv_exporter_export_value_hook($hook, $type, $returnvalue, $params) {
 					if (function_exists('group_tools_get_admins')) {
 						$admins = group_tools_get_admins($entity);
 						$list = array_map(function($a) { return $a->name; }, $admins);
+						$returnvalue = implode(", ", $list);
+					} else {
+						$returnvalue = "";
+					}
+				}
+				break;
+			case "csv_exporter_group_admins_email":
+				if (elgg_instanceof($entity, "group")) {
+					if (function_exists('group_tools_get_admins')) {
+						$admins = group_tools_get_admins($entity);
+						$list = array_map(function($a) { return $a->email; }, $admins);
 						$returnvalue = implode(", ", $list);
 					} else {
 						$returnvalue = "";
