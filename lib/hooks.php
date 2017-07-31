@@ -17,6 +17,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 	
 	if (!empty($params) && is_array($params)) {
 		$type = elgg_extract("type", $params);
+		$subtype = elgg_extract("subtype", $params);
 		$readable = (bool) elgg_extract("readable", $params, false);
 		
 		if ($readable) {
@@ -38,6 +39,13 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 			switch ($type) {
 				case "object":
 					$returnvalue[elgg_echo("tags")] = "csv_exporter_tags";
+
+					switch ($subtype) {
+						case "poll":
+							$returnvalue[elgg_echo("csv_exporter:poll_results")] = "csv_exporter_poll_results";
+							break;
+					}
+
 					break;
 				case "user":
 					// add profile fields
@@ -315,6 +323,27 @@ function csv_exporter_export_value_hook($hook, $type, $returnvalue, $params) {
 				if (elgg_instanceof($entity, "group")) {
 					$ts = csv_exporter_get_last_group_activity($entity);
 					$returnvalue = date(elgg_echo("friendlytime:date_format"), $ts);
+				}
+				break;
+			case "csv_exporter_poll_results":
+				$subtype = $entity->getSubtype();
+				if ($subtype === "poll") {
+					$results = [];
+					foreach ($entity->getAnnotations("vote", 0, 0) as $annotation) {
+						if (isset($results[$annotation->value])) {
+							$results[$annotation->value] += 1;
+						} else {
+							$results[$annotation->value] = 1;
+						}
+					}
+
+					$return = [];
+					foreach ($results as $value => $count) {
+						$return[] = "{$value} ({$count})";
+					}
+
+
+					return implode(", ", $return);
 				}
 				break;
 			default:

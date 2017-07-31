@@ -31,6 +31,7 @@ $language = array (
   'csv_exporter:exportable_value:group:admins:email' => "Groep beheerders email",
   'csv_exporter:exportable_value:group:last_activity' => 'Laatste activiteit',
   'csv_exporter:exportable_value:group:last_activity_readable' => 'Laatste activiteit (leesbaar)',
+  'csv_exporter:poll_results' => "Poll resultaten",
   'csv_exporter:admin:type_subtype' => 'Wat wil je exporteren',
   'csv_exporter:admin:type_subtype:choose' => 'Maak een keuze uit de lijst',
   'csv_exporter:admin:exportable_values' => 'Welke attributen wil je exporteren',
