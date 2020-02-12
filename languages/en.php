@@ -34,7 +34,7 @@ $english = array(
 	'csv_exporter:exportable_value:group:last_activity' => "Last activity",
 	'csv_exporter:exportable_value:group:last_activity_readable' => "Last activity (readable)",
 	'csv_exporter:poll_results' => "Poll results",
-	
+	'csv_exporter:exportable_value:total_file_size' => 'Total file size',
 	'csv_exporter:admin:type_subtype' => "What do you wish to export",
 	'csv_exporter:admin:type_subtype:choose' => "Please choose from the list",
 	'csv_exporter:admin:exportable_values' => "Which attributes do you wish to export",

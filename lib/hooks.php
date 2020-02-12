@@ -90,6 +90,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:admins:email")] = "csv_exporter_group_admins_email";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:last_activity")] = "csv_exporter_group_last_activity";
 					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:last_activity_readable")] = "csv_exporter_group_last_activity_readable";
+					$returnvalue[elgg_echo("csv_exporter:exportable_value:group:total_file_size")] = "csv_exporter_group_total_file_size";
 					break;
 			}
 		} else {
@@ -139,6 +140,7 @@ function csv_exporter_get_exportable_values_hook($hook, $type, $returnvalue, $pa
 					$returnvalue[] = "csv_exporter_group_member_count";
 					$returnvalue[] = "csv_exporter_group_last_activity";
 					$returnvalue[] = "csv_exporter_group_last_activity_readable";
+					$returnvalue[] = "csv_exporter_group_total_file_size";
 					break;
 			}
 		}
@@ -325,6 +327,29 @@ function csv_exporter_export_value_hook($hook, $type, $returnvalue, $params) {
 					$returnvalue = date(elgg_echo("friendlytime:date_format"), $ts);
 				}
 				break;
+			case "csv_exporter_group_total_file_size":
+				if (elgg_instanceof($entity, "group")) {
+					$dbprefix = elgg_get_config("dbprefix");
+
+					$options = array(
+						'type' => 'object',
+						'subtype' => 'file',
+						'container_guid' => (int) $entity->guid
+					);
+					$files = elgg_get_entities($options);
+
+					$total_size = 0;
+					foreach ($files as $file) {
+						$filesize = $file->size();
+						if ($filesize) {
+							$total_size += $filesize;
+						}
+					}
+					$returnvalue = $total_size;
+				}
+				break;
+
+				
 			case "csv_exporter_poll_results":
 				$subtype = $entity->getSubtype();
 				if ($subtype === "poll") {
