@@ -33,6 +33,7 @@ $english = array(
 	'csv_exporter:exportable_value:group:admins:email' => "Group admins email",
 	'csv_exporter:exportable_value:group:last_activity' => "Last activity",
 	'csv_exporter:exportable_value:group:last_activity_readable' => "Last activity (readable)",
+	'csv_exporter:exportable_value:group:total_file_size' => 'Total file size',
 	'csv_exporter:poll_results' => "Poll results",
 	'csv_exporter:exportable_value:group:total_file_size' => 'Total file size (bytes)',
 	'csv_exporter:admin:type_subtype' => "What do you wish to export",

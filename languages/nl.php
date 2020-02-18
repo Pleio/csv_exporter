@@ -31,6 +31,7 @@ $language = array (
   'csv_exporter:exportable_value:group:admins:email' => "Groep beheerders email",
   'csv_exporter:exportable_value:group:last_activity' => 'Laatste activiteit',
   'csv_exporter:exportable_value:group:last_activity_readable' => 'Laatste activiteit (leesbaar)',
+	'csv_exporter:exportable_value:group:total_file_size' => 'Totale bestand grootte',
   'csv_exporter:poll_results' => "Poll resultaten",
   'csv_exporter:exportable_value:group:total_file_size' => 'Totale bestandsgrootte (bytes)',
   'csv_exporter:admin:type_subtype' => 'Wat wil je exporteren',
