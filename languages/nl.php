@@ -41,5 +41,8 @@ $language = array (
   'csv_exporter:admin:preview' => 'Voorbeeld',
   'csv_exporter:admin:preview:title' => 'Dit zal zich in de CSV bevinden',
   'csv_exporter:admin:download' => 'Download CSV',
+	'csv_exporter:discussion:export' => "Discussies (pleio template)",
+  'csv_exporter:wiki:export' => "Wiki (pleio template)",
+	'csv_exporter:event:export' => "Event (pleio template)",
 );
 add_translation("nl", $language);

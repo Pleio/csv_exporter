@@ -1,6 +1,7 @@
 <?php
 
 $type_subtypes = get_registered_entity_types();
+
 $type_subtype_options = array();
 foreach ($type_subtypes as $type => $subtypes) {
 	if (!empty($subtypes)) {
@@ -11,6 +12,10 @@ foreach ($type_subtypes as $type => $subtypes) {
 		$type_subtype_options[$type] = elgg_echo("item:" . $type);
 	}
 }
+
+$type_subtype_options["object:discussion"] = elgg_echo("csv_exporter:discussion:export");
+$type_subtype_options["object:wiki"] = elgg_echo("csv_exporter:wiki:export");
+$type_subtype_options["object:event"] = elgg_echo("csv_exporter:event:export");
 
 natcasesort($type_subtype_options);
 $type_subtype_options = array_merge(array_reverse($type_subtype_options), array("" => elgg_echo("csv_exporter:admin:type_subtype:choose")));
@@ -23,21 +28,21 @@ $type_subtype = elgg_get_sticky_value("csv_exporter", "type_subtype", get_input(
 $form_body .= "<div>";
 $form_body .= "<label for='csv-exporter-type-subtype'>" . elgg_echo("csv_exporter:admin:type_subtype") . "</label>";
 $form_body .= elgg_view("input/dropdown", array(
-	"name" => "type_subtype", 
-	"value" => $type_subtype, 
-	"options_values" => $type_subtype_options, 
-	"id" => "csv-exporter-type-subtype", 
+	"name" => "type_subtype",
+	"value" => $type_subtype,
+	"options_values" => $type_subtype_options,
+	"id" => "csv-exporter-type-subtype",
 	"class" => "mls"
 ));
 $form_body .= "</div>";
 
 if (!empty($type_subtype)) {
 	list($type, $subtype) = explode(":", $type_subtype);
-	
+
 	$exportable_values_options = csv_exporter_get_exportable_values($type, $subtype, true);
 	uksort($exportable_values_options, "strcasecmp");
 	$exportable_values = elgg_get_sticky_value("csv_exporter", "exportable_values", get_input("exportable_values"));
-	
+
 	$form_body .= "<div>";
 	$form_body .= elgg_echo("csv_exporter:admin:exportable_values") . "<br />";
 	$form_body .= elgg_view("input/checkboxes", array(
@@ -46,16 +51,16 @@ if (!empty($type_subtype)) {
 		"value" => $exportable_values
 	));
 	$form_body .= "</div>";
-	
+
 	$form_body .= "<div class='elgg-foot'>";
 	$form_body .= elgg_view("input/button", array(
-		"value" => elgg_echo("csv_exporter:admin:download"), 
-		"class" => "elgg-button-action float-alt", 
+		"value" => elgg_echo("csv_exporter:admin:download"),
+		"class" => "elgg-button-action float-alt",
 		"id" => "csv-exporter-download"
 	));
 	$form_body .= elgg_view("input/submit", array("value" => elgg_echo("csv_exporter:admin:preview")));
 	$form_body .= "</div>";
-	
+
 	if (!empty($exportable_values)) {
 		$preview = elgg_view("csv_exporter/preview", array("type" => $type, "subtype" => $subtype, "exportable_values" => $exportable_values));
 	}

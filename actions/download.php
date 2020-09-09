@@ -38,6 +38,7 @@ if ($type == "user") {
 
 $entities = elgg_get_entities_from_relationship($options);
 foreach ($entities as $guid) {
+
     $entity = get_entity($guid);
 
 	$values = array();

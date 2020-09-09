@@ -2,7 +2,7 @@
 
 $english = array(
 	'admin:administer_utilities:csv_exporter' => "CSV Exporter",
-	
+
 	'csv_exporter:exportable_value:guid' => "GUID",
 	'csv_exporter:exportable_value:type' => "Type",
 	'csv_exporter:exportable_value:subtype' => "Subtype",
@@ -25,7 +25,7 @@ $english = array(
 	'csv_exporter:exportable_value:url' => "Entity URL",
 	'csv_exporter:exportable_value:user:site_newsletter' => "Site newsletter",
 	'csv_exporter:exportable_value:user:last_action' => "Last action",
-	'csv_exporter:exportable_value:user:last_action_readable' => "Last action (readable)",	
+	'csv_exporter:exportable_value:user:last_action_readable' => "Last action (readable)",
 	'csv_exporter:exportable_value:user:last_login' => "Last login",
 	'csv_exporter:exportable_value:user:last_login_readable' => "Last login (readable)",
 	'csv_exporter:exportable_value:group:member_count' => "Member count",
@@ -43,6 +43,9 @@ $english = array(
 	'csv_exporter:admin:preview' => "Preview",
 	'csv_exporter:admin:preview:title' => "This will be in the CSV",
 	'csv_exporter:admin:download' => "Download CSV",
+	'csv_exporter:discussion:export' => "Discussions (pleio template)",
+	'csv_exporter:wiki:export' => "Wiki (pleio template)",
+	'csv_exporter:event:export' => "Event (pleio template)",
 	'' => "",
 );
 
