@@ -7,7 +7,7 @@ $type_subtype = get_input("type_subtype");
 $exportable_values = get_input("exportable_values");
 
 list($type, $subtype) = explode(":", $type_subtype);
-
+error_log("asdfsadf-----------asdfasdfasdfasd");
 $fh = fopen("php://output", "w"); // stream to output buffer
 
 $available_values = csv_exporter_get_exportable_values($type, $subtype, true);
@@ -40,6 +40,10 @@ $entities = elgg_get_entities_from_relationship($options);
 foreach ($entities as $guid) {
 
     $entity = get_entity($guid);
+
+	if (!$entity) {
+		continue;
+	}
 
 	$values = array();
 	// params for hook
